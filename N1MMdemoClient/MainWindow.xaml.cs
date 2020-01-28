@@ -308,7 +308,7 @@ namespace N1MMdemoClient
 
     public partial class MainWindow : Window
     {
-        public const int listenPort = 12060;
+        public const int listenPort = 13063;
         
         public MainWindow()
         {
@@ -338,8 +338,9 @@ namespace N1MMdemoClient
                             Spot spot = new Spot();
                             spot = XmlConvert.DeserializeObject<Spot>(message);
                             DateTime date = DateTime.Parse(spot.Timestamp, System.Globalization.CultureInfo.CurrentCulture);
-                            label = string.Format("Spot: {0} QRG:{1,9:N1} DX: {2} DE: {3}",
-                                        date.ToLongTimeString(), float.Parse(spot.Frequency), spot.Dxcall, spot.Spottercall);
+                            label = string.Format("Spot {0} : {1} QRG:{2,9:N1} DX: {3} DE: {4}",
+                                        spot.Action, date.ToLongTimeString(), float.Parse(spot.Frequency), spot.Dxcall, 
+                                        spot.Spottercall);
                             if (spot.Action == "add")
                                 Application.Current.Dispatcher.Invoke(new Action(() =>  {
                                     SpotLabel.Content = label; 
