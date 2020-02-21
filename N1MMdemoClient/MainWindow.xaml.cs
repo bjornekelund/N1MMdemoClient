@@ -51,6 +51,8 @@ namespace N1MMdemoClient
         public string IsStereo { get; set; }
         [XmlElement(ElementName = "ActiveRadioNr")]
         public string ActiveRadioNr { get; set; }
+        [XmlElement(ElementName = "InactiveFreq")]
+        public string InactiveFreq { get; set; }
     }
 
     [XmlRoot(ElementName = "AppInfo")]
@@ -356,8 +358,8 @@ namespace N1MMdemoClient
                         {
                             RadioInfo radioInfo = new RadioInfo();
                             radioInfo = XmlConvert.DeserializeObject<RadioInfo>(message);
-                            label = string.Format("Radio Nr {0} Rx: {1, 9:N2} Tx: {2, 9:N2}",
-                                    radioInfo.RadioNr, radioInfo.Freq / 100f, radioInfo.TXFreq / 100f);
+                            label = string.Format("Radio Nr {0} Rx: {1, 9:N2} Tx: {2, 9:N2} Ant: {3}",
+                                    radioInfo.RadioNr, radioInfo.Freq / 100f, radioInfo.TXFreq / 100f, radioInfo.Antenna);
                             Application.Current.Dispatcher.Invoke(new Action(() => {
                                     if (radioInfo.RadioNr == 1)
                                         Radio1FreqLabel.Content = label;
