@@ -310,7 +310,7 @@ namespace N1MMdemoClient
 
     public partial class MainWindow : Window
     {
-        public const int listenPort = 13063;
+        public const int listenPort = 12060;
         
         public MainWindow()
         {
