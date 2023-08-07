@@ -5,10 +5,10 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:N1MMdemoClient"
         mc:Ignorable="d"
-        Title="N1MM Demo Client" Height="223.6" Width="467.2" ResizeMode="NoResize" LocationChanged="SaveLocation" Background="White">
+        Title="N1MM Demo Client" Height="223.6" Width="667.427" ResizeMode="NoResize" LocationChanged="SaveLocation" Background="White">
     <Grid Background="Black">
-        <Label x:Name="Radio1FreqLabel" Content="No radio 1 info yet" HorizontalAlignment="Left" Margin="10,9,0,0" VerticalAlignment="Top" Height="30" Width="407" FontFamily="Lucida Sans Typewriter" Foreground="White"/>
-        <Label x:Name="Radio2FreqLabel" Content="No radio 2 info yet" HorizontalAlignment="Left" Margin="10,44,0,0" VerticalAlignment="Top" Height="30" Width="407" FontFamily="Lucida Sans Typewriter" Foreground="White"/>
+        <Label x:Name="Radio1FreqLabel" Content="No radio 1 info yet" HorizontalAlignment="Left" Margin="10,9,0,0" VerticalAlignment="Top" Height="30" Width="641" FontFamily="Lucida Sans Typewriter" Foreground="White"/>
+        <Label x:Name="Radio2FreqLabel" Content="No radio 2 info yet" HorizontalAlignment="Left" Margin="10,44,0,0" VerticalAlignment="Top" Height="30" Width="641" FontFamily="Lucida Sans Typewriter" Foreground="White"/>
         <Label x:Name="SpotLabel" Content="No spot info yet" HorizontalAlignment="Left" Margin="10,79,0,0" VerticalAlignment="Top" Height="32" Width="407" FontFamily="Lucida Sans Typewriter" Foreground="White"/>
         <Label x:Name="ScoreLabel" Content="No score info yet" HorizontalAlignment="Left" Margin="10,116,0,0" VerticalAlignment="Top" Height="30" Width="407" FontFamily="Lucida Sans Typewriter" Foreground="White"/>
         <Label x:Name="LogLabel" Content="No log info yet" HorizontalAlignment="Left" Margin="10,151,0,0" VerticalAlignment="Top" Height="30" Width="407" FontFamily="Lucida Sans Typewriter" Foreground="White"/>

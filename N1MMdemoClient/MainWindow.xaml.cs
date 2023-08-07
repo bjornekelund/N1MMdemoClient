@@ -46,13 +46,15 @@ namespace N1MMdemoClient
         [XmlElement(ElementName = "Rotors")]
         public string Rotors { get; set; }
         [XmlElement(ElementName = "FocusRadioNr")]
-        public string FocusRadioNr { get; set; }
+        public int FocusRadioNr { get; set; }
         [XmlElement(ElementName = "IsStereo")]
         public string IsStereo { get; set; }
         [XmlElement(ElementName = "ActiveRadioNr")]
-        public string ActiveRadioNr { get; set; }
+        public int ActiveRadioNr { get; set; }
+        [XmlElement(ElementName = "IsSplit")]
+        public string IsSplit { get; set; }
         [XmlElement(ElementName = "InactiveFreq")]
-        public string InactiveFreq { get; set; }
+        public int InactiveFreq { get; set; }
     }
 
     [XmlRoot(ElementName = "AppInfo")]
@@ -358,8 +360,8 @@ namespace N1MMdemoClient
                         {
                             RadioInfo radioInfo = new RadioInfo();
                             radioInfo = XmlConvert.DeserializeObject<RadioInfo>(message);
-                            label = string.Format("Radio Nr {0} Rx: {1, 9:N2} Tx: {2, 9:N2} Ant: {3}",
-                                    radioInfo.RadioNr, radioInfo.Freq / 100f, radioInfo.TXFreq / 100f, radioInfo.Antenna);
+                            label = string.Format("Radio Nr {0} Rx: {1, 9:N2} Tx: {2, 9:N2} Split: {3} InactFreq: {4} ActiveRadio: {5}",
+                                    radioInfo.RadioNr, radioInfo.Freq / 100f, radioInfo.TXFreq / 100f, radioInfo.IsSplit, radioInfo.InactiveFreq, radioInfo.ActiveRadioNr);
                             Application.Current.Dispatcher.Invoke(new Action(() => {
                                     if (radioInfo.RadioNr == 1)
                                         Radio1FreqLabel.Content = label;
