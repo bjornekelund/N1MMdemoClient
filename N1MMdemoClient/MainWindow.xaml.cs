@@ -360,8 +360,8 @@ namespace N1MMdemoClient
                         {
                             RadioInfo radioInfo = new RadioInfo();
                             radioInfo = XmlConvert.DeserializeObject<RadioInfo>(message);
-                            label = string.Format("Radio Nr {0} Rx: {1, 9:N2} Tx: {2, 9:N2} Split: {3} InactFreq: {4} ActiveRadio: {5}",
-                                    radioInfo.RadioNr, radioInfo.Freq / 100f, radioInfo.TXFreq / 100f, radioInfo.IsSplit, radioInfo.InactiveFreq, radioInfo.ActiveRadioNr);
+                            label = string.Format("Radio Nr {0} Rx: {1, 9:N2} Tx: {2, 9:N2} Split: {3} InFreq: {4, 9:N2} ActR: {5} FocR: {6}",
+                                    radioInfo.RadioNr, radioInfo.Freq / 100f, radioInfo.TXFreq / 100f, radioInfo.IsSplit, radioInfo.InactiveFreq / 100f, radioInfo.ActiveRadioNr, radioInfo.FocusRadioNr);
                             Application.Current.Dispatcher.Invoke(new Action(() => {
                                     if (radioInfo.RadioNr == 1)
                                         Radio1FreqLabel.Content = label;
