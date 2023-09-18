@@ -51,6 +51,8 @@ namespace N1MMdemoClient
         public string IsStereo { get; set; }
         [XmlElement(ElementName = "ActiveRadioNr")]
         public int ActiveRadioNr { get; set; }
+        [XmlElement(ElementName = "Technique")]
+        public string Technique { get; set; }
         [XmlElement(ElementName = "IsSplit")]
         public string IsSplit { get; set; }
         [XmlElement(ElementName = "InactiveFreq")]
@@ -360,8 +362,8 @@ namespace N1MMdemoClient
                         {
                             RadioInfo radioInfo = new RadioInfo();
                             radioInfo = XmlConvert.DeserializeObject<RadioInfo>(message);
-                            label = string.Format("Radio Nr {0} Rx: {1, 9:N2} Tx: {2, 9:N2} Split: {3} InFreq: {4, 9:N2} ActR: {5} FocR: {6}",
-                                    radioInfo.RadioNr, radioInfo.Freq / 100f, radioInfo.TXFreq / 100f, radioInfo.IsSplit, radioInfo.InactiveFreq / 100f, radioInfo.ActiveRadioNr, radioInfo.FocusRadioNr);
+                            label = string.Format("Radio Nr {0} Rx: {1, 9:N2} Tx: {2, 9:N2} Split: {3} InFreq: {4, 9:N2} ActR: {5} FocR: {6} RSP: {7} Tech: {8}",
+                                    radioInfo.RadioNr, radioInfo.Freq / 100f, radioInfo.TXFreq / 100f, radioInfo.IsSplit, radioInfo.InactiveFreq / 100f, radioInfo.ActiveRadioNr, radioInfo.FocusRadioNr, radioInfo.IsRunning.ToUpper() == "TRUE" ? "Run" : "S&P", radioInfo.Technique);
                             Application.Current.Dispatcher.Invoke(new Action(() => {
                                     if (radioInfo.RadioNr == 1)
                                         Radio1FreqLabel.Content = label;
