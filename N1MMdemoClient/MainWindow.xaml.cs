@@ -324,8 +324,8 @@ namespace N1MMdemoClient
             string label;
 
             // Fetch window location from saved settings
-            this.Top = Properties.Settings.Default.Top;
-            this.Left = Properties.Settings.Default.Left;
+            Top = Properties.Settings.Default.Top;
+            Left = Properties.Settings.Default.Left;
 
             InitializeComponent();
 
@@ -402,8 +402,8 @@ namespace N1MMdemoClient
         private void SaveLocation(object sender, EventArgs e)
         {
             // Remember window location 
-            Properties.Settings.Default.Top = this.Top;
-            Properties.Settings.Default.Left = this.Left;
+            Properties.Settings.Default.Top = Top;
+            Properties.Settings.Default.Left = Left;
             Properties.Settings.Default.Save();
         }
     }
