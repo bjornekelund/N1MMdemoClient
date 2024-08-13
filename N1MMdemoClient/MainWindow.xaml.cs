@@ -381,14 +381,8 @@ namespace N1MMdemoClient
                             Spot spot = new Spot();
                             spot = XmlConvert.DeserializeObject<Spot>(message);
                             DateTime date = DateTime.Parse(spot.Timestamp, System.Globalization.CultureInfo.CurrentCulture);
-                            label = string.Format("Spot {0} : {1} QRG:{2,9:N1} DX: {3} DE: {4}",
-                                        spot.Action, date.ToLongTimeString(), float.Parse(spot.Frequency), spot.Dxcall,
-                                        spot.Spottercall);
-                            if (spot.Action == "add")
-                                Application.Current.Dispatcher.Invoke(new Action(() =>
-                                {
-                                    SpotLabel.Content = label;
-                                }));
+                            label = string.Format($"Spot {spot.Action}: {date.ToLongTimeString()} QRG: {float.Parse(spot.Frequency):N1} DX: {spot.Dxcall} DE: {spot.Spottercall}");
+                            Application.Current.Dispatcher.Invoke(new Action(() => { SpotLabel.Content = label; }));
                         }
                         else if (doc.Element("AppInfo") != null)
                         {
@@ -400,31 +394,21 @@ namespace N1MMdemoClient
                         {
                             RadioInfo radioInfo = new RadioInfo();
                             radioInfo = XmlConvert.DeserializeObject<RadioInfo>(message);
-                            label = string.Format("Radio Nr {0} Rx: {1, 9:N2} Tx: {2, 9:N2} Split: {3} InFreq: {4, 9:N2} ActR: {5} FocR: {6} RSP: {7} Tech: {8} ST: {9}",
+                            label = string.Format("Radio: #{0} Rx: {1, 9:N2} Tx: {2, 9:N2} Split: {3} InFreq: {4, 9:N2} ActR: {5} FocR: {6} S&P: {7} Tech: {8} ST: {9}",
                                     radioInfo.RadioNr, radioInfo.Freq / 100f, radioInfo.TXFreq / 100f, radioInfo.IsSplit, radioInfo.InactiveFreq / 100f,
                                     radioInfo.ActiveRadioNr, radioInfo.FocusRadioNr, radioInfo.IsRunning.ToUpper() == "TRUE" ? "Run" : "S&P",
                                     radioInfo.Technique, radioInfo.StationType);
-                            Application.Current.Dispatcher.Invoke(new Action(() =>
-                            {
-                                if (radioInfo.RadioNr == 1)
-                                    Radio1FreqLabel.Content = label;
-                                else
-                                    Radio2FreqLabel.Content = label;
-                            }));
+                            Application.Current.Dispatcher.Invoke(new Action(() => { if (radioInfo.RadioNr == 1) Radio1FreqLabel.Content = label; else Radio2FreqLabel.Content = label; }));
                         }
                         else if (doc.Element("Rotator") != null)
                         {
                             RotatorInfo rinfo = new RotatorInfo();
                             rinfo = XmlConvert.DeserializeObject<RotatorInfo>(message);
-                            if (rinfo.go == "1")
-                                label = $"UDPRotator: Go: Station {rinfo.station} Radio Nr {rinfo.radio} az: {rinfo.azimuth}";
+                            if (rinfo.go == "True")
+                                label = $"UDPRotator: Go: station {rinfo.station.Replace("_", "__")} radio: #{rinfo.radio} az: {rinfo.azimuth}";
                             else
                                 label = $"UDPRotator: Stop";
-                            Application.Current.Dispatcher.Invoke(new Action(() =>
-
-                            {
-                                rotorLabel.Content = label;
-                            }));
+                            Application.Current.Dispatcher.Invoke(new Action(() => { rotorLabel.Content = label; }));
                         }
                         else if (doc.Element("PST") != null)
                         {
@@ -433,31 +417,22 @@ namespace N1MMdemoClient
                             if (rinfo.stop == "1")
                                 label = $"PSTRotator: Stop";
                             else
-                                label = $"PSTRotator: call: {rinfo.call} az: {rinfo.azimuth}";
-                            Application.Current.Dispatcher.Invoke(new Action(() =>
-                            {
-                                rotorLabel.Content = label;
-                            }));
+                                label = $"PSTRotator: Go: call: {rinfo.call} az: {rinfo.azimuth}";
+                            Application.Current.Dispatcher.Invoke(new Action(() => { rotorLabel.Content = label; }));
                         }
                         else if (doc.Element("contactinfo") != null)
                         {
                             Contactinfo contactInfo = new Contactinfo();
                             contactInfo = XmlConvert.DeserializeObject<Contactinfo>(message);
                             label = string.Format("Most recently logged call: {0}", contactInfo.Call);
-                            Application.Current.Dispatcher.Invoke(new Action(() =>
-                            {
-                                LogLabel.Content = label;
-                            }));
+                            Application.Current.Dispatcher.Invoke(new Action(() => { LogLabel.Content = label; }));
                         }
                         else if (doc.Element("dynamicresults") != null)
                         {
                             Dynamicresults dynamicResults = new Dynamicresults();
                             dynamicResults = XmlConvert.DeserializeObject<Dynamicresults>(message);
                             label = string.Format("Score: {0}", dynamicResults.Score);
-                            Application.Current.Dispatcher.Invoke(new Action(() =>
-                            {
-                                ScoreLabel.Content = label;
-                            }));
+                            Application.Current.Dispatcher.Invoke(new Action(() => { ScoreLabel.Content = label; }));
                         }
                     }
                 }
