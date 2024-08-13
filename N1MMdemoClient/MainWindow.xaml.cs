@@ -5,15 +5,15 @@
 // By Björn Ekelund SM7IUN sm7iun@ssa.se 2019-02-05
 
 using System;
-using System.Net.Sockets;
-using System.Xml.Linq;
-using System.Xml;
-using System.Xml.Serialization;
-using System.IO;
-using System.Text;
 using System.Collections.Generic;
-using System.Windows;
+using System.IO;
+using System.Net.Sockets;
+using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
+using System.Xml;
+using System.Xml.Linq;
+using System.Xml.Serialization;
 
 //using N1MMdemoClient.Properties;
 
@@ -26,269 +26,304 @@ namespace N1MMdemoClient
     public class RadioInfo
     {
         [XmlElement(ElementName = "StationName")]
-        public string StationName { get; set; }
+        public string StationName;
         [XmlElement(ElementName = "RadioNr")]
-        public int RadioNr { get; set; }
+        public int RadioNr;
         [XmlElement(ElementName = "Freq")]
-        public int Freq { get; set; }
+        public int Freq;
         [XmlElement(ElementName = "TXFreq")]
-        public int TXFreq { get; set; }
+        public int TXFreq;
         [XmlElement(ElementName = "Mode")]
-        public string Mode { get; set; }
+        public string Mode;
         [XmlElement(ElementName = "OpCall")]
-        public string OpCall { get; set; }
+        public string OpCall;
         [XmlElement(ElementName = "IsRunning")]
-        public string IsRunning { get; set; }
+        public string IsRunning;
         [XmlElement(ElementName = "FocusEntry")]
-        public string FocusEntry { get; set; }
+        public string FocusEntry;
         [XmlElement(ElementName = "Antenna")]
-        public string Antenna { get; set; }
+        public string Antenna;
         [XmlElement(ElementName = "Rotors")]
-        public string Rotors { get; set; }
+        public string Rotors;
         [XmlElement(ElementName = "FocusRadioNr")]
-        public int FocusRadioNr { get; set; }
+        public int FocusRadioNr;
         [XmlElement(ElementName = "IsStereo")]
-        public string IsStereo { get; set; }
+        public string IsStereo;
         [XmlElement(ElementName = "ActiveRadioNr")]
-        public int ActiveRadioNr { get; set; }
+        public int ActiveRadioNr;
         [XmlElement(ElementName = "Technique")]
-        public string Technique { get; set; }
+        public string Technique;
         [XmlElement(ElementName = "StationType")]
-        public string StationType { get; set; }
+        public string StationType;
         [XmlElement(ElementName = "IsSplit")]
-        public string IsSplit { get; set; }
+        public string IsSplit;
         [XmlElement(ElementName = "InactiveFreq")]
-        public int InactiveFreq { get; set; }
+        public int InactiveFreq;
     }
 
     [XmlRoot(ElementName = "AppInfo")]
     public class AppInfo
     {
         [XmlElement(ElementName = "dbname")]
-        public string Dbname { get; set; }
+        public string Dbname;
         [XmlElement(ElementName = "contestnr")]
-        public string Contestnr { get; set; }
+        public string Contestnr;
         [XmlElement(ElementName = "contestname")]
-        public string Contestname { get; set; }
+        public string Contestname;
         [XmlElement(ElementName = "StationName")]
-        public string StationName { get; set; }
+        public string StationName;
     }
 
     [XmlRoot(ElementName = "spot")]
     public class Spot
     {
         [XmlElement(ElementName = "StationName")]
-        public string StationName { get; set; }
+        public string StationName;
         [XmlElement(ElementName = "dxcall")]
-        public string Dxcall { get; set; }
+        public string Dxcall;
         [XmlElement(ElementName = "frequency")]
-        public string Frequency { get; set; }
+        public string Frequency;
         [XmlElement(ElementName = "spottercall")]
-        public string Spottercall { get; set; }
+        public string Spottercall;
         [XmlElement(ElementName = "comment")]
-        public string Comment { get; set; }
+        public string Comment;
         [XmlElement(ElementName = "action")]
-        public string Action { get; set; }
+        public string Action;
         [XmlElement(ElementName = "status")]
-        public string Status { get; set; }
+        public string Status;
         [XmlElement(ElementName = "statuslist")]
-        public string Statuslist { get; set; }
+        public string Statuslist;
         [XmlElement(ElementName = "timestamp")]
-        public string Timestamp { get; set; }
+        public string Timestamp;
     }
 
     [XmlRoot(ElementName = "contactinfo")]
     public class Contactinfo
     {
         [XmlElement(ElementName = "contestname")]
-        public string Contestname { get; set; }
+        public string Contestname;
         [XmlElement(ElementName = "contestnr")]
-        public string Contestnr { get; set; }
+        public string Contestnr;
         [XmlElement(ElementName = "timestamp")]
-        public string Timestamp { get; set; }
+        public string Timestamp;
         [XmlElement(ElementName = "mycall")]
-        public string Mycall { get; set; }
+        public string Mycall;
         [XmlElement(ElementName = "band")]
-        public string Band { get; set; }
+        public string Band;
         [XmlElement(ElementName = "rxfreq")]
-        public string Rxfreq { get; set; }
+        public string Rxfreq;
         [XmlElement(ElementName = "txfreq")]
-        public string Txfreq { get; set; }
+        public string Txfreq;
         [XmlElement(ElementName = "operator")]
-        public string Operator { get; set; }
+        public string Operator;
         [XmlElement(ElementName = "mode")]
-        public string Mode { get; set; }
+        public string Mode;
         [XmlElement(ElementName = "call")]
-        public string Call { get; set; }
+        public string Call;
         [XmlElement(ElementName = "countryprefix")]
-        public string Countryprefix { get; set; }
+        public string Countryprefix;
         [XmlElement(ElementName = "wpxprefix")]
-        public string Wpxprefix { get; set; }
+        public string Wpxprefix;
         [XmlElement(ElementName = "stationprefix")]
-        public string Stationprefix { get; set; }
+        public string Stationprefix;
         [XmlElement(ElementName = "continent")]
-        public string Continent { get; set; }
+        public string Continent;
         [XmlElement(ElementName = "snt")]
-        public string Snt { get; set; }
+        public string Snt;
         [XmlElement(ElementName = "sntnr")]
-        public string Sntnr { get; set; }
+        public string Sntnr;
         [XmlElement(ElementName = "rcv")]
-        public string Rcv { get; set; }
+        public string Rcv;
         [XmlElement(ElementName = "rcvnr")]
-        public string Rcvnr { get; set; }
+        public string Rcvnr;
         [XmlElement(ElementName = "gridsquare")]
-        public string Gridsquare { get; set; }
+        public string Gridsquare;
         [XmlElement(ElementName = "exchange1")]
-        public string Exchange1 { get; set; }
+        public string Exchange1;
         [XmlElement(ElementName = "section")]
-        public string Section { get; set; }
+        public string Section;
         [XmlElement(ElementName = "comment")]
-        public string Comment { get; set; }
+        public string Comment;
         [XmlElement(ElementName = "qth")]
-        public string Qth { get; set; }
+        public string Qth;
         [XmlElement(ElementName = "name")]
-        public string Name { get; set; }
+        public string Name;
         [XmlElement(ElementName = "power")]
-        public string Power { get; set; }
+        public string Power;
         [XmlElement(ElementName = "misctext")]
-        public string Misctext { get; set; }
+        public string Misctext;
         [XmlElement(ElementName = "zone")]
-        public string Zone { get; set; }
+        public string Zone;
         [XmlElement(ElementName = "prec")]
-        public string Prec { get; set; }
+        public string Prec;
         [XmlElement(ElementName = "ck")]
-        public string Ck { get; set; }
+        public string Ck;
         [XmlElement(ElementName = "ismultiplier1")]
-        public string Ismultiplier1 { get; set; }
+        public string Ismultiplier1;
         [XmlElement(ElementName = "ismultiplier2")]
-        public string Ismultiplier2 { get; set; }
+        public string Ismultiplier2;
         [XmlElement(ElementName = "ismultiplier3")]
-        public string Ismultiplier3 { get; set; }
+        public string Ismultiplier3;
         [XmlElement(ElementName = "points")]
-        public string Points { get; set; }
+        public string Points;
         [XmlElement(ElementName = "radionr")]
-        public string Radionr { get; set; }
+        public string Radionr;
         [XmlElement(ElementName = "RoverLocation")]
-        public string RoverLocation { get; set; }
+        public string RoverLocation;
         [XmlElement(ElementName = "RadioInterfaced")]
-        public string RadioInterfaced { get; set; }
+        public string RadioInterfaced;
         [XmlElement(ElementName = "NetworkedCompNr")]
-        public string NetworkedCompNr { get; set; }
+        public string NetworkedCompNr;
         [XmlElement(ElementName = "IsOriginal")]
-        public string IsOriginal { get; set; }
+        public string IsOriginal;
         [XmlElement(ElementName = "NetBiosName")]
-        public string NetBiosName { get; set; }
+        public string NetBiosName;
         [XmlElement(ElementName = "IsRunQSO")]
-        public string IsRunQSO { get; set; }
+        public string IsRunQSO;
         [XmlElement(ElementName = "Run1Run2")]
-        public string Run1Run2 { get; set; }
+        public string Run1Run2;
         [XmlElement(ElementName = "ContactType")]
-        public string ContactType { get; set; }
+        public string ContactType;
         [XmlElement(ElementName = "StationName")]
-        public string StationName { get; set; }
+        public string StationName;
     }
 
     [XmlRoot(ElementName = "class")]
     public class Class
     {
         [XmlAttribute(AttributeName = "power")]
-        public string Power { get; set; }
+        public string Power;
         [XmlAttribute(AttributeName = "assisted")]
-        public string Assisted { get; set; }
+        public string Assisted;
         [XmlAttribute(AttributeName = "transmitter")]
-        public string Transmitter { get; set; }
+        public string Transmitter;
         [XmlAttribute(AttributeName = "ops")]
-        public string Ops { get; set; }
+        public string Ops;
         [XmlAttribute(AttributeName = "bands")]
-        public string Bands { get; set; }
+        public string Bands;
         [XmlAttribute(AttributeName = "mode")]
-        public string Mode { get; set; }
+        public string Mode;
         [XmlAttribute(AttributeName = "overlay")]
-        public string Overlay { get; set; }
+        public string Overlay;
     }
 
     [XmlRoot(ElementName = "qth")]
     public class Qth
     {
         [XmlElement(ElementName = "dxcccountry")]
-        public string Dxcccountry { get; set; }
+        public string Dxcccountry;
         [XmlElement(ElementName = "cqzone")]
-        public string Cqzone { get; set; }
+        public string Cqzone;
         [XmlElement(ElementName = "iaruzone")]
-        public string Iaruzone { get; set; }
+        public string Iaruzone;
         [XmlElement(ElementName = "arrlsection")]
-        public string Arrlsection { get; set; }
+        public string Arrlsection;
         [XmlElement(ElementName = "grid6")]
-        public string Grid6 { get; set; }
+        public string Grid6;
     }
 
     [XmlRoot(ElementName = "qso")]
     public class Qso
     {
         [XmlAttribute(AttributeName = "band")]
-        public string Band { get; set; }
+        public string Band;
         [XmlAttribute(AttributeName = "mode")]
-        public string Mode { get; set; }
+        public string Mode;
         [XmlText]
-        public string Text { get; set; }
+        public string Text;
     }
 
     [XmlRoot(ElementName = "mult")]
     public class Mult
     {
         [XmlAttribute(AttributeName = "band")]
-        public string Band { get; set; }
+        public string Band;
         [XmlAttribute(AttributeName = "mode")]
-        public string Mode { get; set; }
+        public string Mode;
         [XmlAttribute(AttributeName = "type")]
-        public string Type { get; set; }
+        public string Type;
         [XmlText]
-        public string Text { get; set; }
+        public string Text;
     }
 
     [XmlRoot(ElementName = "point")]
     public class Point
     {
         [XmlAttribute(AttributeName = "band")]
-        public string Band { get; set; }
+        public string Band;
         [XmlAttribute(AttributeName = "mode")]
-        public string Mode { get; set; }
+        public string Mode;
         [XmlText]
-        public string Text { get; set; }
+        public string Text;
     }
 
     [XmlRoot(ElementName = "breakdown")]
     public class Breakdown
     {
         [XmlElement(ElementName = "qso")]
-        public List<Qso> Qso { get; set; }
+        public List<Qso> Qso;
         [XmlElement(ElementName = "mult")]
-        public List<Mult> Mult { get; set; }
+        public List<Mult> Mult;
         [XmlElement(ElementName = "point")]
-        public List<Point> Point { get; set; }
+        public List<Point> Point;
     }
 
     [XmlRoot(ElementName = "dynamicresults")]
     public class Dynamicresults
     {
         [XmlElement(ElementName = "contest")]
-        public string Contest { get; set; }
+        public string Contest;
         [XmlElement(ElementName = "call")]
-        public string Call { get; set; }
+        public string Call;
         [XmlElement(ElementName = "ops")]
-        public string Ops { get; set; }
+        public string Ops;
         [XmlElement(ElementName = "class")]
-        public Class Class { get; set; }
+        public Class Class;
         [XmlElement(ElementName = "club")]
-        public string Club { get; set; }
+        public string Club;
         [XmlElement(ElementName = "qth")]
-        public Qth Qth { get; set; }
+        public Qth Qth;
         [XmlElement(ElementName = "breakdown")]
-        public Breakdown Breakdown { get; set; }
+        public Breakdown Breakdown;
         [XmlElement(ElementName = "score")]
-        public string Score { get; set; }
+        public string Score;
         [XmlElement(ElementName = "timestamp")]
-        public string Timestamp { get; set; }
+        public string Timestamp;
+    }
+
+    // using System.Xml.Serialization;
+    // XmlSerializer serializer = new XmlSerializer(typeof(Rotator));
+    // using (StringReader reader = new StringReader(xml))
+    // {
+    //    var test = (Rotator)serializer.Deserialize(reader);
+    // }
+
+    [XmlRoot(ElementName = "Rotator")]
+    public class RotatorInfo
+    {
+        [XmlElement(ElementName = "station")]
+        public string station;
+        [XmlElement(ElementName = "radio")]
+        public string radio;
+        [XmlElement(ElementName = "stop")]
+        public string stop;
+        [XmlElement(ElementName = "go")]
+        public string go;
+        [XmlElement(ElementName = "azimuth")]
+        public string azimuth;
+        [XmlElement(ElementName = "frequency")]
+        public string frequency;
+    }
+
+    [XmlRoot(ElementName = "PST")]
+    public class RotatorInfoPST
+    {
+        [XmlElement(ElementName = "STOP")]
+        public string stop;
+        [XmlElement(ElementName = "CALL")]
+        public string call;
+        [XmlElement(ElementName = "AZIMUTH")]
+        public string azimuth;
     }
 
     // Helper class to parse XML datagrams
@@ -317,7 +352,7 @@ namespace N1MMdemoClient
     public partial class MainWindow : Window
     {
         public const int listenPort = 12060;
-        
+
         public MainWindow()
         {
             string message;
@@ -347,11 +382,12 @@ namespace N1MMdemoClient
                             spot = XmlConvert.DeserializeObject<Spot>(message);
                             DateTime date = DateTime.Parse(spot.Timestamp, System.Globalization.CultureInfo.CurrentCulture);
                             label = string.Format("Spot {0} : {1} QRG:{2,9:N1} DX: {3} DE: {4}",
-                                        spot.Action, date.ToLongTimeString(), float.Parse(spot.Frequency), spot.Dxcall, 
+                                        spot.Action, date.ToLongTimeString(), float.Parse(spot.Frequency), spot.Dxcall,
                                         spot.Spottercall);
                             if (spot.Action == "add")
-                                Application.Current.Dispatcher.Invoke(new Action(() =>  {
-                                    SpotLabel.Content = label; 
+                                Application.Current.Dispatcher.Invoke(new Action(() =>
+                                {
+                                    SpotLabel.Content = label;
                                 }));
                         }
                         else if (doc.Element("AppInfo") != null)
@@ -365,22 +401,51 @@ namespace N1MMdemoClient
                             RadioInfo radioInfo = new RadioInfo();
                             radioInfo = XmlConvert.DeserializeObject<RadioInfo>(message);
                             label = string.Format("Radio Nr {0} Rx: {1, 9:N2} Tx: {2, 9:N2} Split: {3} InFreq: {4, 9:N2} ActR: {5} FocR: {6} RSP: {7} Tech: {8} ST: {9}",
-                                    radioInfo.RadioNr, radioInfo.Freq / 100f, radioInfo.TXFreq / 100f, radioInfo.IsSplit, radioInfo.InactiveFreq / 100f, 
-                                    radioInfo.ActiveRadioNr, radioInfo.FocusRadioNr, radioInfo.IsRunning.ToUpper() == "TRUE" ? "Run" : "S&P", 
+                                    radioInfo.RadioNr, radioInfo.Freq / 100f, radioInfo.TXFreq / 100f, radioInfo.IsSplit, radioInfo.InactiveFreq / 100f,
+                                    radioInfo.ActiveRadioNr, radioInfo.FocusRadioNr, radioInfo.IsRunning.ToUpper() == "TRUE" ? "Run" : "S&P",
                                     radioInfo.Technique, radioInfo.StationType);
-                            Application.Current.Dispatcher.Invoke(new Action(() => {
-                                    if (radioInfo.RadioNr == 1)
-                                        Radio1FreqLabel.Content = label;
-                                    else
-                                        Radio2FreqLabel.Content = label;
-                                }));
+                            Application.Current.Dispatcher.Invoke(new Action(() =>
+                            {
+                                if (radioInfo.RadioNr == 1)
+                                    Radio1FreqLabel.Content = label;
+                                else
+                                    Radio2FreqLabel.Content = label;
+                            }));
+                        }
+                        else if (doc.Element("Rotator") != null)
+                        {
+                            RotatorInfo rinfo = new RotatorInfo();
+                            rinfo = XmlConvert.DeserializeObject<RotatorInfo>(message);
+                            if (rinfo.go == "1")
+                                label = $"UDPRotator: Go: Station {rinfo.station} Radio Nr {rinfo.radio} az: {rinfo.azimuth}";
+                            else
+                                label = $"UDPRotator: Stop";
+                            Application.Current.Dispatcher.Invoke(new Action(() =>
+
+                            {
+                                rotorLabel.Content = label;
+                            }));
+                        }
+                        else if (doc.Element("PST") != null)
+                        {
+                            RotatorInfoPST rinfo = new RotatorInfoPST();
+                            rinfo = XmlConvert.DeserializeObject<RotatorInfoPST>(message);
+                            if (rinfo.stop == "1")
+                                label = $"PSTRotator: Stop";
+                            else
+                                label = $"PSTRotator: call: {rinfo.call} az: {rinfo.azimuth}";
+                            Application.Current.Dispatcher.Invoke(new Action(() =>
+                            {
+                                rotorLabel.Content = label;
+                            }));
                         }
                         else if (doc.Element("contactinfo") != null)
                         {
                             Contactinfo contactInfo = new Contactinfo();
                             contactInfo = XmlConvert.DeserializeObject<Contactinfo>(message);
                             label = string.Format("Most recently logged call: {0}", contactInfo.Call);
-                            Application.Current.Dispatcher.Invoke(new Action(() => {
+                            Application.Current.Dispatcher.Invoke(new Action(() =>
+                            {
                                 LogLabel.Content = label;
                             }));
                         }
@@ -389,13 +454,14 @@ namespace N1MMdemoClient
                             Dynamicresults dynamicResults = new Dynamicresults();
                             dynamicResults = XmlConvert.DeserializeObject<Dynamicresults>(message);
                             label = string.Format("Score: {0}", dynamicResults.Score);
-                            Application.Current.Dispatcher.Invoke(new Action(() => {
+                            Application.Current.Dispatcher.Invoke(new Action(() =>
+                            {
                                 ScoreLabel.Content = label;
                             }));
                         }
                     }
                 }
-                
+
             });
         }
 
