@@ -1,8 +1,8 @@
-﻿// Demo broadcast listener for N1MM Logger+
+﻿// Demo broadcast listener for N1MM Logger+ and other generating UPD XML datagrams
 // Receives UDP broadcasts on listenPort, parses XML into an object and prints info
 // Intended as starting point for development of more applications such as 
 // big screen score board, out-of-band alarm, etc.
-// By Björn Ekelund SM7IUN sm7iun@ssa.se 2019-02-05
+// By Björn Ekelund SM7IUN sm7iun@ssa.se 2024-08-15
 
 using System;
 using System.Collections.Generic;
@@ -291,13 +291,6 @@ namespace N1MMdemoClient
         public string Timestamp;
     }
 
-    // using System.Xml.Serialization;
-    // XmlSerializer serializer = new XmlSerializer(typeof(Rotator));
-    // using (StringReader reader = new StringReader(xml))
-    // {
-    //    var test = (Rotator)serializer.Deserialize(reader);
-    // }
-
     [XmlRoot(ElementName = "Rotator")]
     public class RotatorInfo
     {
@@ -313,6 +306,32 @@ namespace N1MMdemoClient
         public string azimuth;
         [XmlElement(ElementName = "frequency")]
         public string frequency;
+    }
+
+    [XmlRoot(ElementName = "stop")]
+    public class Stop
+    {
+        [XmlElement(ElementName = "rotor")]
+        public string rotor;
+        [XmlElement(ElementName = "freqband")]
+        public double freqband;
+    }
+
+    [XmlRoot(ElementName = "N1MMRotor")]
+    public class N1MMRotor
+    {
+        [XmlElement(ElementName = "rotor")]
+        public string rotor;
+        [XmlElement(ElementName = "goazi")]
+        public string goazi;
+        [XmlElement(ElementName = "offset")]
+        public string offset;
+        [XmlElement(ElementName = "bidirectional")]
+        public string bidirectional;
+        [XmlElement(ElementName = "freqband")]
+        public string freqband;
+        [XmlElement(ElementName = "stop")]
+        public Stop stop;
     }
 
     [XmlRoot(ElementName = "PST")]
@@ -418,6 +437,17 @@ namespace N1MMdemoClient
                                 label = $"PSTRotator: Stop";
                             else
                                 label = $"PSTRotator: Go: call: {rinfo.call} az: {rinfo.azimuth}";
+                            Application.Current.Dispatcher.Invoke(new Action(() => { rotorLabel.Content = label; }));
+                        }
+                        else if (doc.Element("N1MMRotor") != null)
+                        {
+                            N1MMRotor rinfo = new N1MMRotor();
+                            rinfo = XmlConvert.DeserializeObject<N1MMRotor>(message);
+
+                            if (rinfo.stop != null)
+                                label = $"N1MMRotor: Stop";
+                            else
+                                label = $"N1MMRotor: Go: Rotor: {rinfo.rotor} az: {rinfo.goazi} fband: {rinfo.freqband}";
                             Application.Current.Dispatcher.Invoke(new Action(() => { rotorLabel.Content = label; }));
                         }
                         else if (doc.Element("contactinfo") != null)
